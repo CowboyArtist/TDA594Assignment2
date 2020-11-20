@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="BasicGFSurfer">
+			<graphics key="collapsed" value="false"/>
+			<feature name="Fire"/>
+			<and name="Movement">
+				<and name="Dodge">
+					<and name="WaveSurfing">
+						<feature mandatory="true" name="TrueSurfing"/>
+						<feature name="GoToSurfing"/>
+						<feature name="MeleeSurfing"/>
+					</and>
+				</and>
+			</and>
+			<and name="Targeting">
+				<feature name="GuessFactorTargeting"/>
+			</and>
+			<feature name="Radar"/>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>Dodge</var>
+				<var>Radar</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Targeting</var>
+				<var>Radar</var>
+			</imp>
+		</rule>
+	</constraints>
+</featureModel>
