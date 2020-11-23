@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="RoboCodeBot">
+			<and name="Attack">
+				<feature name="Fire"/>
+				<feature name="Melee"/>
+			</and>
+			<and name="Movement">
+				<and name="RegularMovement">
+					<feature name="MinimumRiskMovement"/>
+					<feature name="MirrorMovement"/>
+					<feature name="RandomMovement"/>
+					<feature name="OrbitMovement"/>
+				</and>
+				<and name="Dodge">
+					<and name="WaveSurfing">
+						<feature name="TrueSurfing"/>
+						<feature name="GoToSurfing"/>
+						<feature name="MeleeSurfing"/>
+					</and>
+					<feature name="FlatMovementProfile"/>
+					<feature name="StopAndGoMovement"/>
+				</and>
+			</and>
+			<and name="Targeting">
+				<feature name="CircularTargeting"/>
+				<feature name="MultipleChoices"/>
+				<and name="PatternMatching">
+					<feature name="SymbolicPatternMatching"/>
+				</and>
+				<feature name="GuessFactorTargeting"/>
+				<and name="VirtualGuns">
+					<feature name="GuessFactorVirtualGuns"/>
+				</and>
+				<feature name="PlayItForward"/>
+			</and>
+			<feature name="Radar"/>
+			<and name="DataSaving">
+				<feature name="DynamicDistancing"/>
+			</and>
+			<and name="Calculations">
+				<feature name="DynamicClustering"/>
+				<feature name="VisitCountStats"/>
+				<feature name="GuessFactor"/>
+			</and>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>DynamicClustering</var>
+				<var>DataSaving</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>GuessFactorTargeting</var>
+				<var>GuessFactor</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>GuessFactorVirtualGuns</var>
+				<var>GuessFactor</var>
+			</imp>
+		</rule>
+	</constraints>
+</featureModel>
