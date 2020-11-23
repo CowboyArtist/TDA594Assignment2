@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="CuobelinDC">
+			<graphics key="collapsed" value="false"/>
+			<feature name="Fire"/>
+			<and name="Movement">
+				<and name="Dodge">
+					<feature name="WaveSurfing"/>
+				</and>
+			</and>
+			<and name="Targeting">
+				<feature name="MultipleChoices"/>
+				<feature name="PatternMatching"/>
+			</and>
+			<feature name="Radar"/>
+			<and name="Log">
+				<feature name="DynamicClustering"/>
+			</and>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>WaveSurfing</var>
+				<var>DynamicClustering</var>
+			</imp>
+		</rule>
+	</constraints>
+</featureModel>
