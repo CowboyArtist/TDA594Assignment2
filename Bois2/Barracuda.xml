@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="Barracuda">
+			<graphics key="collapsed" value="false"/>
+			<feature name="Fire"/>
+			<and name="Movement">
+				<and name="Dodge">
+					<feature name="SandboxFlattener"/>
+				</and>
+				<feature name="RegularMovement"/>
+			</and>
+			<and name="Targeting">
+				<feature name="AverageBearingOffsetTargeting"/>
+			</and>
+			<feature name="Radar"/>
+			<and name="Logging">
+				<feature mandatory="true" name="WriteLog"/>
+				<feature name="ReadLog"/>
+			</and>
+		</and>
+	</struct>
+</featureModel>

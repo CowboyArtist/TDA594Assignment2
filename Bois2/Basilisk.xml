@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="Basilisk">
+			<graphics key="collapsed" value="false"/>
+			<feature name="Fire"/>
+			<and name="Movement">
+				<or name="Dodge">
+					<feature name="StopAndGo"/>
+					<feature name="RandomMovement"/>
+				</or>
+				<feature name="RegularMovement"/>
+			</and>
+			<and name="Targeting">
+				<feature name="GuessFactorTargeting"/>
+				<feature name="EnergyManagment"/>
+				<feature name="RollingAvergages"/>
+				<feature name="Segmentation"/>
+			</and>
+			<feature name="Radar"/>
+			<and name="Logging">
+				<feature mandatory="true" name="WriteLog"/>
+				<feature name="ReadLog"/>
+			</and>
+		</and>
+	</struct>
+</featureModel>

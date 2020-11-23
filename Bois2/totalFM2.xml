@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="legendposition" value="1079,396"/>
+		<graphics key="legendautolayout" value="false"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="Root">
+			<and name="Fire">
+				<feature name="EnergyManagement"/>
+			</and>
+			<and name="Movement">
+				<and name="RegularMovement">
+					<feature name="WaveSurfing"/>
+					<feature name="RandomMovement"/>
+					<feature name="RammingMovement"/>
+					<feature name="MinimumRiskMovement"/>
+					<feature name="AntiGravityMovement"/>
+					<feature name="WallSmoothing"/>
+				</and>
+				<and name="Dodge">
+					<feature name="StopAndGo"/>
+					<feature name="OscilliatorMovement"/>
+					<feature name="SandboxFlattener"/>
+				</and>
+			</and>
+			<and name="Targeting">
+				<and name="QuickTargeting">
+					<feature name="HeadOnTargeting"/>
+					<feature name="CircularTargeting"/>
+					<feature name="MeanTargeting"/>
+					<feature name="RandomTargeting"/>
+					<feature name="LinearTargeting"/>
+				</and>
+				<and name="LogBased">
+					<and name="PatternMatching">
+						<feature name="FoldedPatternMatching"/>
+					</and>
+				</and>
+				<and name="StatisticalTargeting">
+					<feature name="LaserTargeting"/>
+					<feature name="AvgBearingOffsetTargeting"/>
+					<feature name="RollingAvg"/>
+				</and>
+				<and name="AngleBased">
+					<feature name="GuessFactorTargeting"/>
+					<feature name="PlayItForward"/>
+				</and>
+			</and>
+			<and name="Logging">
+				<feature mandatory="true" name="WriteLog"/>
+				<and name="ReadLog">
+					<feature name="DynamicClustering"/>
+				</and>
+			</and>
+			<feature name="Radar"/>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>WaveSurfing</var>
+				<var>ReadLog</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>PatternMatching</var>
+				<var>Logging</var>
+			</imp>
+		</rule>
+	</constraints>
+</featureModel>
