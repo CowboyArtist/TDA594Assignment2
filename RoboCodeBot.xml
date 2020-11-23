@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="RoboCodeBot">
+			<and name="Fire">
+				<feature name="EnergyManagement"/>
+			</and>
+			<and name="Movement">
+				<and name="LogBasedMovement">
+					<graphics key="collapsed" value="false"/>
+					<feature name="MinimumRiskMovement"/>
+				</and>
+				<feature name="RandomMovement"/>
+				<and name="ScanBasedMovement">
+					<feature name="MirrorMovement"/>
+					<feature name="OrbitMovement"/>
+				</and>
+				<alt name="WaveSurfing">
+					<feature name="TrueSurfing"/>
+					<feature name="GoToSurfing"/>
+					<feature name="MeleeSurfing"/>
+				</alt>
+				<feature name="FlatMovementProfile"/>
+				<feature name="StopAndGoMovement"/>
+				<feature name="RammingMovement"/>
+				<feature name="AntiGravityMovement"/>
+				<feature name="WallSMoothing"/>
+				<feature name="OscillatorMovement"/>
+				<feature name="SandboxFlattener"/>
+			</and>
+			<or name="Targeting">
+				<or name="Basic">
+					<feature name="HeadOnTargeting"/>
+					<feature name="CircularTargeting"/>
+					<feature name="MenaTargeting"/>
+					<feature name="RandomTargeting"/>
+					<feature name="LinearTargeting"/>
+				</or>
+				<and name="LogBased">
+					<and mandatory="true" name="PatternMatching">
+						<feature name="FoldedPatternMatching"/>
+						<feature name="SymbolicPatternMatching"/>
+					</and>
+				</and>
+				<or name="Statistical">
+					<feature name="LaserTargeting"/>
+					<feature name="AvgBearingOffsetTargeting"/>
+					<feature name="RollingAvg"/>
+				</or>
+				<or name="AngleBased">
+					<feature name="GuessFactorTargeting"/>
+					<feature name="PlayItForward"/>
+					<feature name="MultipleChoices"/>
+				</or>
+				<feature name="VirtualGuns"/>
+			</or>
+			<feature name="Scanning"/>
+			<feature name="Logging"/>
+			<or name="Calculations">
+				<feature name="DynamicClustering"/>
+				<feature name="DynamicDistancing"/>
+				<feature name="VisitCountStats"/>
+				<feature name="GuessFactor"/>
+				<feature name="Distance"/>
+			</or>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>EnergyManagement</var>
+				<var>Distance</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Distance</var>
+				<var>Scanning</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>ScanBasedMovement</var>
+				<var>Scanning</var>
+			</imp>
+		</rule>
+	</constraints>
+</featureModel>
