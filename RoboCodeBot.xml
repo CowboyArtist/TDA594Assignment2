@@ -93,12 +93,6 @@
 		</rule>
 		<rule>
 			<imp>
-				<var>Distance</var>
-				<var>Scanning</var>
-			</imp>
-		</rule>
-		<rule>
-			<imp>
 				<var>ScanBasedMovement</var>
 				<var>Scanning</var>
 			</imp>
