@@ -157,5 +157,11 @@
 				<var>DynamicClustering</var>
 			</imp>
 		</rule>
+		<rule>
+			<imp>
+				<var>GuessFactorTargeting</var>
+				<var>GuessFactor</var>
+			</imp>
+		</rule>
 	</constraints>
 </featureModel>
