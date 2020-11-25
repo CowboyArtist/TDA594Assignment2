@@ -58,7 +58,6 @@
 					<or name="StatisticalTargeting">
 						<feature name="LaserTargeting"/>
 						<feature name="AvgBearingOffsetTargeting"/>
-						<feature name="RollingAvg"/>
 					</or>
 					<feature name="DynamicClusteringTargeting"/>
 				</or>
@@ -75,6 +74,7 @@
 				<or mandatory="true" name="ScanbasedCalculations">
 					<or name="LogbasedCalculations">
 						<feature name="DynamicClustering"/>
+						<feature name="RollingAvg"/>
 						<feature name="DynamicDistancing"/>
 						<feature name="VisitCountStats"/>
 					</or>
