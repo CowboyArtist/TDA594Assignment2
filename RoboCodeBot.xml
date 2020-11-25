@@ -10,9 +10,7 @@
 	</properties>
 	<struct>
 		<and abstract="true" mandatory="true" name="RoboCodeBot">
-			<and name="Fire">
-				<feature name="EnergyManagement"/>
-			</and>
+			<feature name="Fire"/>
 			<or mandatory="true" name="Movement">
 				<feature name="RandomMovement"/>
 				<or name="ScanBasedMovement">
@@ -85,12 +83,6 @@
 		</and>
 	</struct>
 	<constraints>
-		<rule>
-			<imp>
-				<var>EnergyManagement</var>
-				<var>Distance</var>
-			</imp>
-		</rule>
 		<rule>
 			<imp>
 				<var>ScanBasedMovement</var>
