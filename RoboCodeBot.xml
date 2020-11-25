@@ -13,47 +13,54 @@
 			<and name="Fire">
 				<feature name="EnergyManagement"/>
 			</and>
-			<and name="Movement">
-				<and name="LogBasedMovement">
-					<graphics key="collapsed" value="false"/>
-					<feature name="MinimumRiskMovement"/>
-				</and>
+			<or mandatory="true" name="Movement">
 				<feature name="RandomMovement"/>
-				<and name="ScanBasedMovement">
+				<or name="ScanBasedMovement">
 					<feature name="MirrorMovement"/>
+					<or name="LogBasedMovement">
+						<graphics key="collapsed" value="false"/>
+						<feature name="MinimumRiskMovement"/>
+						<feature name="SandboxFlattener"/>
+						<alt name="WaveSurfing">
+							<feature name="TrueSurfing"/>
+							<feature name="GoToSurfing"/>
+							<feature name="MeleeSurfing"/>
+						</alt>
+					</or>
+					<feature name="RammingMovement"/>
+					<feature name="OscillatorMovement"/>
+					<feature name="AntiGravityMovement"/>
+					<feature name="StopAndGoMovement"/>
 					<feature name="OrbitMovement"/>
-				</and>
-				<alt name="WaveSurfing">
-					<feature name="TrueSurfing"/>
-					<feature name="GoToSurfing"/>
-					<feature name="MeleeSurfing"/>
-				</alt>
+				</or>
 				<feature name="FlatMovementProfile"/>
-				<feature name="StopAndGoMovement"/>
-				<feature name="RammingMovement"/>
-				<feature name="AntiGravityMovement"/>
-				<feature name="WallSMoothing"/>
-				<feature name="OscillatorMovement"/>
-				<feature name="SandboxFlattener"/>
-			</and>
+				<feature name="WallSmoothing"/>
+				<feature name="Stationary"/>
+			</or>
+			<feature name="Dodge"/>
+			<or name="Switch">
+				<feature name="SwitchTargeting"/>
+				<feature name="SwitchMovement"/>
+			</or>
 			<or name="Targeting">
 				<or name="Basic">
 					<feature name="HeadOnTargeting"/>
 					<feature name="CircularTargeting"/>
-					<feature name="MenaTargeting"/>
+					<feature name="MeanTargeting"/>
 					<feature name="RandomTargeting"/>
 					<feature name="LinearTargeting"/>
 				</or>
-				<and name="LogBased">
-					<and mandatory="true" name="PatternMatching">
+				<or name="LogBased">
+					<and name="PatternMatching">
 						<feature name="FoldedPatternMatching"/>
 						<feature name="SymbolicPatternMatching"/>
 					</and>
-				</and>
-				<or name="Statistical">
-					<feature name="LaserTargeting"/>
-					<feature name="AvgBearingOffsetTargeting"/>
-					<feature name="RollingAvg"/>
+					<or name="Statistical">
+						<feature name="LaserTargeting"/>
+						<feature name="AvgBearingOffsetTargeting"/>
+						<feature name="RollingAvg"/>
+					</or>
+					<feature name="DynamicClusteringTargeting"/>
 				</or>
 				<or name="AngleBased">
 					<feature name="GuessFactorTargeting"/>
@@ -62,15 +69,19 @@
 				</or>
 				<feature name="VirtualGuns"/>
 			</or>
-			<feature name="Scanning"/>
+			<feature mandatory="true" name="Scanning"/>
 			<feature name="Logging"/>
-			<or name="Calculations">
-				<feature name="DynamicClustering"/>
-				<feature name="DynamicDistancing"/>
-				<feature name="VisitCountStats"/>
-				<feature name="GuessFactor"/>
-				<feature name="Distance"/>
-			</or>
+			<and name="Calculations">
+				<or mandatory="true" name="Scanbased">
+					<or name="Logbased">
+						<feature name="DynamicClustering"/>
+						<feature name="DynamicDistancing"/>
+						<feature name="VisitCountStats"/>
+					</or>
+					<feature name="Distance"/>
+					<feature name="GuessFactor"/>
+				</or>
+			</and>
 		</and>
 	</struct>
 	<constraints>
@@ -90,6 +101,60 @@
 			<imp>
 				<var>ScanBasedMovement</var>
 				<var>Scanning</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Dodge</var>
+				<var>Movement</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>LogBasedMovement</var>
+				<var>Logging</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>SwitchTargeting</var>
+				<var>Targeting</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>SwitchMovement</var>
+				<var>Movement</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>LogBased</var>
+				<var>Logging</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>VirtualGuns</var>
+				<var>SwitchTargeting</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Logbased</var>
+				<var>Logging</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Scanbased</var>
+				<var>Scanning</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>DynamicClusteringTargeting</var>
+				<var>DynamicClustering</var>
 			</imp>
 		</rule>
 	</constraints>
