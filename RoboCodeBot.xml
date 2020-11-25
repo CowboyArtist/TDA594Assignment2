@@ -43,26 +43,26 @@
 				<feature name="SwitchMovement"/>
 			</or>
 			<or name="Targeting">
-				<or name="Basic">
+				<or name="BasicTargeting">
 					<feature name="HeadOnTargeting"/>
 					<feature name="CircularTargeting"/>
 					<feature name="MeanTargeting"/>
 					<feature name="RandomTargeting"/>
 					<feature name="LinearTargeting"/>
 				</or>
-				<or name="LogBased">
+				<or name="LogBasedTargeting">
 					<and name="PatternMatching">
 						<feature name="FoldedPatternMatching"/>
 						<feature name="SymbolicPatternMatching"/>
 					</and>
-					<or name="Statistical">
+					<or name="StatisticalTargeting">
 						<feature name="LaserTargeting"/>
 						<feature name="AvgBearingOffsetTargeting"/>
 						<feature name="RollingAvg"/>
 					</or>
 					<feature name="DynamicClusteringTargeting"/>
 				</or>
-				<or name="AngleBased">
+				<or name="AngleBasedTargeting">
 					<feature name="GuessFactorTargeting"/>
 					<feature name="PlayItForward"/>
 					<feature name="MultipleChoices"/>
@@ -72,8 +72,8 @@
 			<feature mandatory="true" name="Scanning"/>
 			<feature name="Logging"/>
 			<and name="Calculations">
-				<or mandatory="true" name="Scanbased">
-					<or name="Logbased">
+				<or mandatory="true" name="ScanbasedCalculations">
+					<or name="LogbasedCalculations">
 						<feature name="DynamicClustering"/>
 						<feature name="DynamicDistancing"/>
 						<feature name="VisitCountStats"/>
@@ -123,7 +123,7 @@
 		</rule>
 		<rule>
 			<imp>
-				<var>LogBased</var>
+				<var>LogBasedTargeting</var>
 				<var>Logging</var>
 			</imp>
 		</rule>
@@ -135,13 +135,13 @@
 		</rule>
 		<rule>
 			<imp>
-				<var>Logbased</var>
+				<var>LogbasedCalculations</var>
 				<var>Logging</var>
 			</imp>
 		</rule>
 		<rule>
 			<imp>
-				<var>Scanbased</var>
+				<var>ScanbasedCalculations</var>
 				<var>Scanning</var>
 			</imp>
 		</rule>
