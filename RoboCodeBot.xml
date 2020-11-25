@@ -51,10 +51,10 @@
 					<feature name="LinearTargeting"/>
 				</or>
 				<or name="LogBasedTargeting">
-					<and name="PatternMatching">
+					<alt name="PatternMatching">
 						<feature name="FoldedPatternMatching"/>
 						<feature name="SymbolicPatternMatching"/>
-					</and>
+					</alt>
 					<or name="StatisticalTargeting">
 						<feature name="LaserTargeting"/>
 						<feature name="AvgBearingOffsetTargeting"/>
